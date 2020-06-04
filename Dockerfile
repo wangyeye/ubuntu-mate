@@ -17,3 +17,4 @@ RUN apt-get update \
         git \
     && apt-get autoclean \
     && apt-get autoremove \
+    && rm -rf /var/lib/apt/lists/*
