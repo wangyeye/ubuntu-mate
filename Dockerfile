@@ -24,31 +24,18 @@ ENV HOME=/headless \
     VNC_VIEW_ONLY=false
 WORKDIR $HOME
 
-### Add all install scripts for further steps
-ADD ./src/ $INST_SCRIPTS/
-RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} +
-
-### Install some common tools
-RUN $INST_SCRIPTS/tools.sh
-ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
-
-### Install custom fonts
-RUN $INST_SCRIPTS/install_custom_fonts.sh
-
-### Install xvnc-server & noVNC - HTML5 based VNC viewer
-RUN $INST_SCRIPTS/tightvnc.sh
-RUN $INST_SCRIPTS/no_vnc.sh
-
-### Install Mate Desktop
-RUN $INST_SCRIPTS/mate.sh
-ADD ./src/mate/ $HOME/
-
-### configure startup
-RUN $INST_SCRIPTS/libnss_wrapper.sh
-ADD ./src/common/scripts $STARTUPDIR
-RUN $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR $HOME
-
-USER 0:0
-
-ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
-CMD ["--wait"]
+RUN apt-get update \
+    && apt-get install -y \
+        apt-utils \
+        vim \
+        cron \
+        openjdk-8-jdk \
+        tightvncserver \
+        ubuntu-mate-desktop \
+        supervisor \
+        net-tools \
+        curl \
+        git \
+        pwgen \
+    && apt-get autoclean \
+    && apt-get autoremove \
