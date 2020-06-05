@@ -1,16 +1,18 @@
 FROM ubuntu:18.04
 
-ENV USER root
+ENV HOME=/root \
+    USER=root \
+    TZ=Asia/Shanghai
 
-RUN apt update \
-    && apt upgrade -y \
-    && apt install -y \
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y \
         apt-utils \
         vim \
         cron \
         openjdk-8-jdk \
         tightvncserver \
-        mate-desktop-environment \
+        ubuntu-mate-desktop \
         supervisor \
         net-tools \
         curl \
