@@ -4,20 +4,21 @@ FROM ubuntu:20.04
 
 ENV USER root
 
-RUN apt-get update \
-    && apt-get install -y \
+RUN apt update \
+    && apt upgrade -y \
+    && apt install -y \
         apt-utils \
         vim \
         cron \
         openjdk-8-jdk \
         tightvncserver \
-        ubuntu-mate-desktop \
+        mate-desktop-environment \
         supervisor \
         net-tools \
         curl \
         git \
-    && apt-get autoclean \
-    && apt-get autoremove \
+    && apt autoclean \
+    && apt autoremove \
     && rm -rf /var/lib/apt/lists/*
     
 COPY startup.sh /root/
