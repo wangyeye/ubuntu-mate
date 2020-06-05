@@ -2,6 +2,7 @@ FROM ubuntu:18.04
 
 ENV HOME=/root \
     USER=root \
+    DEBIAN_FRONTEND=noninteractive \
     TZ=Asia/Shanghai
 
 RUN apt-get update \
