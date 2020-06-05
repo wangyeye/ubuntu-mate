@@ -1,6 +1,4 @@
-# This Dockerfile is used to build an headles vnc image based on Ubuntu
-
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 ENV USER root
 
