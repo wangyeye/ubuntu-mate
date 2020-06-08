@@ -15,7 +15,7 @@ RUN apt-get update \
         cron \
         openjdk-8-jdk \
         tightvncserver \
-        ubuntu-mate-desktop \
+        kubuntu-desktop \
         supervisor \
         net-tools \
         curl \
