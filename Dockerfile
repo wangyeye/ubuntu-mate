@@ -2,11 +2,16 @@
 
 FROM ubuntu:20.04
 
-ENV USER root
+ENV HOME=/root \
+    USER=root \
+    DEBIAN_FRONTEND=noninteractive \
+    TZ=Asia/Shanghai
+    
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt update \
-    && apt upgrade -y \
-    && apt install -y \
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y \
         apt-utils \
         vim \
         cron \
