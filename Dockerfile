@@ -12,7 +12,7 @@ RUN apt update \
         cron \
         openjdk-8-jdk \
         tightvncserver \
-        mate-desktop-environment \
+        ubuntu-mate-desktop \
         supervisor \
         net-tools \
         curl \
